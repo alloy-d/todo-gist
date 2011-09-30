@@ -27,7 +27,7 @@ class Gist
   end
 
   def [](name)
-    @files[name]
+    @files[name][:content]
   end
 
   def []=(name, body)
