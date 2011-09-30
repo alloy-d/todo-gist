@@ -2,6 +2,7 @@
 require 'json'
 require './gist.rb'
 
+# A class for managing a to-do list as a Github Gist.
 class TodoGist
   attr_reader :things
   def initialize(username, password)
@@ -12,6 +13,8 @@ class TodoGist
       @gist = make_gist()
     end
 
+    # Things is a Ruby array of to-do items that is kept in sync with the Gist
+    # contents.
     @things = JSON.parse(@gist["list.json"])
   end
 
@@ -20,11 +23,31 @@ class TodoGist
     update_gist
   end
 
-  def add_thing(thing)
+  # Adds an item to the end of the queue.
+  def enqueue(thing)
     @things << thing
     update_gist
   end
 
+  # Pushes an item to the front of the queue.
+  def push(thing)
+    @things.unshift thing
+    update_gist
+  end
+
+  # Does the default adding thing (same as enqueue).
+  def add_thing(thing)
+    enqueue(thing)
+  end
+
+  # Removes the first item from the list.
+  def pop
+    thing = @things.shift
+    update_gist
+    return thing
+  end
+
+  # Returns the first Gist with description "TODO Gist".
   def find_gist
     matches = @gists.get_all.select {|g| g[:description] == "TODO Gist"}
     if matches.length > 0 then
@@ -35,6 +58,7 @@ class TodoGist
   end
   private :find_gist
 
+  # Makes a Gist if none already exists.
   def make_gist
     @gist = Gist.new(:description => "TODO Gist",
                      :public => false)
@@ -43,6 +67,8 @@ class TodoGist
   end
   private :make_gist
 
+  # Updates the Gist with contents of the list.
+  # FIXME: this allows more than a responsible number of race conditions.
   def update_gist
     @gist["list.json"] = JSON.pretty_generate @things
     @gists.save @gist
