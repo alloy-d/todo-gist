@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'json'
-require './gist.rb'
+require_relative './gist.rb'
 
 # A class for managing a to-do list as a Github Gist.
 class TodoGist
