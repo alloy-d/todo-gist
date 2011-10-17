@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
 require 'json'
-require_relative '../lib/todogist'
+require 'todo-gist'
 
-if ARGV.length < 1
-  STDERR.puts "Provide a command!"
-  exit(-1)
+subcommand = ARGV[0] || "next"
+
+if ARGV.length > 0
+  task = ARGV[1..ARGV.length].join " "
+else
+  task = nil
 end
-subcommand = ARGV[0]
-
-task = ARGV[1..ARGV.length].join " "
 
 credentials_file = File.join(ENV["HOME"], ".github_credentials.json")
 if not File.exist?(credentials_file)
@@ -21,9 +21,9 @@ gist = TodoGist.new(credentials["username"], credentials["password"])
 
 case subcommand
 when "push"
-  gist.push task
+  gist.push task unless task.nil?
 when "enqueue"
-  gist.enqueue task
+  gist.enqueue task unless task.nil?
 when "next"
   puts gist.things[0]
 when "list"
