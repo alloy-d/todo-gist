@@ -1,6 +1,6 @@
 = todo-gist
 
-Description goes here.
+A todo list persisted in a Gist.
 
 == Contributing to todo-gist
  
