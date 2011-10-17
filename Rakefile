@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/alloy-d/todo-gist"
   gem.license = "MIT"
   gem.summary = %Q{A todo list persisted in a Gist.}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.description = %Q{A todo list persisted in a Gist.}
   gem.email = "adam@alloy-d.net"
   gem.authors = ["Adam Lloyd"]
   # dependencies defined in Gemfile
