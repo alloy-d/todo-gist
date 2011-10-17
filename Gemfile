@@ -3,6 +3,7 @@ source "http://rubygems.org"
 gem "json", "~> 1.6.1"
 
 group :development do
+  gem "rake", "= 0.8.7"
   gem "riot", ">= 0"
   gem "yard", "~> 0.6.0"
   gem "bundler", "~> 1.0.0"
