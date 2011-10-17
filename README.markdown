@@ -5,6 +5,9 @@ A todo list persisted in a Gist.
 ## Usage
 
     $ gem install todo-gist
+    $ cat > ~/.github_credentials.json
+    { "username": "YOU", "password": "YOUR SECRET" }
+    ^D
     $ task enqueue Add something to the end of the list.
     $ task push Add something to the beginning of the list.
     $ task list
