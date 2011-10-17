@@ -31,7 +31,8 @@ Gem::Specification.new do |s|
     "lib/gists.rb",
     "lib/todo-gist.rb",
     "test/teststrap.rb",
-    "test/todo-gist_test.rb"
+    "test/todo-gist_test.rb",
+    "todo-gist.gemspec"
   ]
   s.homepage = %q{http://github.com/alloy-d/todo-gist}
   s.licenses = ["MIT"]
