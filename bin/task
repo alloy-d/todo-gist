@@ -26,7 +26,7 @@ when "enqueue", "q", "add", "a"
   gist.enqueue task unless task.nil?
 when "next"
   puts gist.things[0]
-when "list", "l"
+when "list", "ls", "l"
   puts gist.things
 when "pop"
   puts "FINISHED: " + gist.pop
