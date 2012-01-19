@@ -22,11 +22,11 @@ gist = TodoGist.new(credentials["username"], credentials["password"])
 case subcommand
 when "push"
   gist.push task unless task.nil?
-when "enqueue"
+when "enqueue", "q", "add", "a"
   gist.enqueue task unless task.nil?
 when "next"
   puts gist.things[0]
-when "list"
+when "list", "l"
   puts gist.things
 when "pop"
   puts "FINISHED: " + gist.pop
